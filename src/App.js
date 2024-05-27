@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '.components/Header';
+import Header from './components/Header';
 import './App.css';
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <div className='container'>
       <div className='app-wrapper'>
         <div>
-          <Header/>
+          <Header />
         </div>
       </div>
 
