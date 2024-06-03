@@ -13,7 +13,7 @@
 }
 
 .app-wrapper{
-  background-color: aliceblue;
+  background-color: #12343b;
   min-width: 450px;
   min-height: 650px;
   padding: 30px;
@@ -24,7 +24,7 @@
 }
 
 .header h1{
-  color: #000;
+  color: #fff;
   text-align: center;
   margin: 30px 0;
 }
@@ -36,8 +36,8 @@
   margin-right: 25px;
   font-size: 20px;
   color: #ccc;
-  /* background-color:#000; */
-  border: 3px solid #e1b382;
+  background-color:#000;
+  border: 3px solid #c89666;
   border-radius: 25px;
 
 }
@@ -52,3 +52,58 @@
   cursor: pointer;
 }
 
+.list-item {
+  display: flex;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  max-height: 30px;
+}
+
+.button-complete,
+.button-detete,
+.button-edit {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.button-complete{
+  color: #ff6c6c;
+  margin-right: 10px;
+}
+
+.button-edit{
+  color: #2ed029;
+  margin-right: 10px;
+}
+
+.button-detete{
+  color: lightseagreen;
+}
+
+.complete{
+  text-decoration-style: solid;
+  text-decoration-line: line-through;
+  text-decoration-color: #ff6c6c;
+  opacity: 0.6;
+}
+
+.list{
+  width: 220px;
+  background-color: #12343b;
+  border: none;
+  color: #ccc;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-right: 15px;
+}
+
+input:focus,
+button:focus{
+  outline: none;
+}
