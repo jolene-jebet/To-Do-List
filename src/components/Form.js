@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({ input, setInput, todos, setTodos }) => {
     return (
         <form>
             < input type="text" placeholder="what are you planning to do..." className="task-input"/>
