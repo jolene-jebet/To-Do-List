@@ -3,6 +3,12 @@ import React from 'react';
 
 //'todos' is an array of todo obj and 'setTodos' is a function to update the 'todos state'
 const TodoList = ({ todos, setTodos }) => {
+
+    //function for deleting the a todo item on the array
+    const handleDelete = ({ id }) => {
+        setTodos(todos.filter((todo) => todo.id !== id ));
+    }
+
     return(
         <div>
             {/* to iterate through the entire 'todo' array and return the jsx below */}
@@ -25,7 +31,7 @@ const TodoList = ({ todos, setTodos }) => {
                         <button className='button-edit task-button'>
                             <i className='fa fa-edit'></i>
                         </button>
-                        <button className='button-delete task-button'>
+                        <button className='button-delete task-button' onClick={() => handleDelete(todo)}>
                             <i className='fa fa-trash'></i>
                         </button>
                     </div>
