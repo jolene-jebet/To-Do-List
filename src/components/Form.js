@@ -4,17 +4,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const Form = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
-    //unpates an excisting todo item
+    //updates an excisting todo item
     const updateTodo = (title, id, completed) => {
         //maps through the entire array to check if the ids match if they do, it returns a new object w the updated title and completed values else returns original todo object 
         const newTodo = todos.map((todo) => 
-            todos.id === id ? { title, id, completed } : todo
+            todo.id === id ? { title, id, completed } : todo
         )
         //updates the todos state with the newTode array
         setTodos(newTodo);
         //resets the editTodo state to an empty string 
         setEditTodo('');
     }
+
+    useEffect(() => {
+        if(editTodo){
+            setInput(editTodo.title);
+        }else{
+            setInput('');
+        }
+        //effect will be reexecuted whenever setInput and editTodo changes
+    }, [setInput, editTodo]);
+
 
     //handles the input change event by updating its state with current value of input field using setInput function
     const onInputChange = (e) => {
@@ -60,7 +70,8 @@ const Form = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
                 onChange={onInputChange}
                 />
             <button className="button-add" type='submit'>
-                Add
+                {/* converts the button to read ok whenever you are editing a todo item */}
+                { editTodo ? 'OK' : 'Add'}
             </button>
         </form>
     );

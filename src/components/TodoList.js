@@ -48,7 +48,8 @@ const TodoList = ({ todos, setTodos, setEditTodo }) => {
                     type='text'
                     //displays title of current todo
                     value={todo.title}
-                    className='list'
+                    //for embedding sth ontop of a string .. if truthy-line is placed on top ...if falsy - an empty string on top
+                    className= {`list ${todo.completed ? 'complete' : ''}`}
                     // this prop is set to an arrow function that prevents the defau;t behaviour of the inpit field when its value changes(prevents input field from being editable)
                     // (the default behaviour)when you type something into an input field, the browser automatically updates the value of the input field with the new characters you've typed.
                     onChange={(e) => e.preventDefault()}
