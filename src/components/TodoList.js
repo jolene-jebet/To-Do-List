@@ -2,12 +2,7 @@
 import React from 'react';
 
 //'todos' is an array of todo obj and 'setTodos' is a function to update the 'todos state'
-const TodoList = ({ todos, setTodos }) => {
-
-    //function for deleting the a todo item on the array
-    const handleDelete = ({ id }) => {
-        setTodos(todos.filter((todo) => todo.id !== id ));
-    }
+const TodoList = ({ todos, setTodos, setEditTodo }) => {
 
     //function that checks out an item from the to-do list
     const handleComplete = (todo) => {
@@ -29,6 +24,20 @@ const TodoList = ({ todos, setTodos }) => {
         );
     }
 
+    //function for deleting the a todo item on the array
+    const handleDelete = ({ id }) => {
+        setTodos(todos.filter((todo) => todo.id !== id ));
+    }
+
+    //function for handling edits to the todo list array
+    const handleEdit = ({ id }) => {
+        //checks if the current id matches with the id passed to handleEdit. if match iis found it returns that to-do item and stores it to the findTodo value
+        const findTodo = todos.find((todo) => todo.id === id);
+        //used to update the state of the component with the 'find todo value'
+        //the line sets editTodo state to the todo item with the given id 
+        setEditTodo(findTodo);
+    }
+
     return(
         <div>
             {/* to iterate through the entire 'todo' array and return the jsx below */}
@@ -41,6 +50,7 @@ const TodoList = ({ todos, setTodos }) => {
                     value={todo.title}
                     className='list'
                     // this prop is set to an arrow function that prevents the defau;t behaviour of the inpit field when its value changes(prevents input field from being editable)
+                    // (the default behaviour)when you type something into an input field, the browser automatically updates the value of the input field with the new characters you've typed.
                     onChange={(e) => e.preventDefault()}
                     />
                     {/* div containing the buttons for edit, delete and complete */}
@@ -48,11 +58,11 @@ const TodoList = ({ todos, setTodos }) => {
                         <button className='button-complete task-button' onClick = { () => handleComplete(todo) }>
                             <i className='fa fa-check-circle'></i>
                         </button>
-                        <button className='button-edit task-button'>
+                        <button className='button-edit task-button' onClick={() => handleEdit(todo)}>
                             <i className='fa fa-edit'></i>
                         </button>
                         <button className='button-delete task-button' onClick={() => handleDelete(todo)}>
-                            <i className='fa fa-trash'></i>
+                            <i className='fa fa-trash fa-2xl'></i>
                         </button>
                     </div>
                 </li>
